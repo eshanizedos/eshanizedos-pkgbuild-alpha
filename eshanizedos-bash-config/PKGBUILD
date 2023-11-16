@@ -17,6 +17,6 @@ source=('bashrc' 'bashrc-setup.desktop')
 sha256sums=('SKIP')
 
 package() {
-	install -D -m644 bashrc "$pkgdir/etc/skel/.bashrc_garuda"
+	install -D -m644 bashrc "$pkgdir/etc/skel/.eshanizedos_bashrc"
 	install -D -m644 bashrc-setup.desktop "$pkgdir/etc/skel/.config/autostart/bashrc-setup.desktop"
 }
