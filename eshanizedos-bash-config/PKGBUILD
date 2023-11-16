@@ -1,0 +1,22 @@
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=eshanizedos-bash-config
+pkgver=1.0.6
+pkgrel=1
+pkgdesc="Eshanized OS Bash Config!"
+arch=(any)
+url="https://github.com/eshanizedos/"
+license=('GPL')
+depends=('bash'
+	'bash-completion'
+	'find-the-command-git'
+	'starship-git'
+	'ugrep')
+makedepends=('git')
+source=('bashrc' 'bashrc-setup.desktop')
+sha256sums=('SKIP')
+
+package() {
+	install -D -m644 bashrc "$pkgdir/etc/skel/.bashrc_garuda"
+	install -D -m644 bashrc-setup.desktop "$pkgdir/etc/skel/.config/autostart/bashrc-setup.desktop"
+}
