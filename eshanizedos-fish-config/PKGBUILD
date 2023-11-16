@@ -20,6 +20,7 @@ depends=('bat'
 	'ugrep')
 makedepends=('git')
 source=("eshanizedos-fish-update.service"
+	"eshanizedos-starship"
 	"config.fish"
 	"https://raw.githubusercontent.com/franciscolourenco/done/master/conf.d/done.fish")
 sha256sums=('6f7ffc81204fa908a324d0030d211e522ee0b0eee5be34b67ae885de4c02ffe7'
