@@ -1,0 +1,32 @@
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=eshanizedos-system-config
+_pkgname=eshanizedos-system-config
+_destname1="/etc"
+_destname2="/usr"
+_licensedir="/usr/share/eshanizedos/licenses/"
+pkgver=23.09
+pkgrel=03
+pkgdesc="Eshanized OS Config File"
+arch=('x86_64')
+url="https://github.com/eshanizedos/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=()
+backup=('etc/pacman.d/gnupg/gpg.conf' 'etc/X11/xorg.conf.d/30-touchpad.conf')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://github.com/eshanizedos/${_pkgname}")
+sha256sums=('SKIP')
+install='eshanizedos-system-config.install'
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir/$_destname1"
+  cp -r ${srcdir}/${pkgname}/${_destname1} ${pkgdir}
+
+  install -dm755 "$pkgdir$_destname2"
+  cp -r ${srcdir}/${pkgname}/${_destname2} ${pkgdir}
+}
