@@ -1,0 +1,25 @@
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=eshanizedos-calamares-config-sway-alpha
+_pkgname=eshanizedos-calamares-config-sway-alpha
+_destname="/etc/calamares"
+_licensedir="/usr/share/eshanizedos/licenses/"
+pkgver=23.11
+pkgrel=30
+pkgdesc="Eshanized OS Calamares Config for Sway!"
+arch=('any')
+url="https://github.com/eshanizedos/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/eshanizedos/${_pkgname}.git")
+sha256sums=('SKIP')
+install='eshanizedos-calamares-config-sway-alpha.install'
+package() {
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}"
+}
