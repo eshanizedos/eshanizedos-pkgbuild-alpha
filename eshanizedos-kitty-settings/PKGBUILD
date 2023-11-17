@@ -1,0 +1,26 @@
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=eshanizedos-kitty-settings
+_pkgname=eshanizedos-kitty-settings
+_destname1="/etc/skel/.config/kitty/"
+_licensedir="/usr/share/eshanizedos/licenses/"
+pkgver=23.06
+pkgrel=01
+pkgdesc="Eshanized OS Kitty Settings"
+arch=('any')
+url="https://github.com/eshanizedos/eshanizedos-kitty-settings"
+license=('GPL3')
+makedepends=('git')
+depends=('bash' 'python')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/eshanizedos/${_pkgname}.git")
+sha256sums=('SKIP')
+install='eshanizedos-kitty-settings.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
