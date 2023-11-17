@@ -1,0 +1,24 @@
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=eshanizedos-wayland-profile
+_pkgname=eshanizedos-wayland-profile
+_destname1="/etc/profile.d/"
+_licensedir="/usr/share/eshanizedos/licenses/"
+pkgver=23.06
+pkgrel=01
+pkgdesc="Eshanized OS Wayland Profile"
+arch=('any')
+url="https://github.com/eshanizedos/"$_pkgname
+license=('GPL3')
+makedepends=('git')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://github.com/eshanizedos/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir$_destname1"
+  install -m644 "$srcdir/$pkgname/$_destname1/"* "$pkgdir$_destname1"
+}
