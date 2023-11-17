@@ -1,4 +1,4 @@
-# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
 pkgname=eshanizedos-alacritty-settings
 _pkgname=$pkgname
 _destname1="/etc/skel/.config/alacritty/"
