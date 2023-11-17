@@ -1,0 +1,31 @@
+# Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=eshanizedos-sway-settings-alpha
+pkgdesc='Sway Settings For Eshanized OS!'
+pkgver=1.1.20
+pkgrel=1
+arch=('any')
+url="https://github.com/eshanizedos/$pkgname"
+license=('GPL')
+makedepends=('coreutils')
+source=("#")
+sha256sums=('SKIP')
+depends=('capitaine-cursors'
+	'gtk-engine-murrine'
+	'kvantum'
+	'kvantum-theme-nordic-git'
+	'nordic-darker-theme'
+	'qt5ct'
+	'sway'
+	'swayidle'
+	'swaylock'
+	'swaybg'
+	'tela-circle-icon-theme-git')
+install="$pkgname".install
+
+package() {
+	install -d "$pkgdir/etc"
+	cp -rf "$srcdir/$pkgname-$pkgver/etc" "$pkgdir"
+	install -d "$pkgdir/usr"
+	cp -rf "$srcdir/$pkgname-$pkgver/usr" "$pkgdir"
+}
